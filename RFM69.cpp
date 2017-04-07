@@ -300,7 +300,7 @@ void RFM69::sendFrame(uint8_t toAddress, const void* buffer, uint8_t bufferSize,
   // no need to wait for transmit mode to be ready since its handled by the radio
   setMode(RF69_MODE_TX);
   uint32_t txStart = millis();
-  while (digitalRead_interruptPin) == 0 && millis() - txStart < RF69_TX_LIMIT_MS); // wait for DIO0 to turn HIGH signalling transmission finish
+  while (digitalRead(_interruptPin) == 0 && millis() - txStart < RF69_TX_LIMIT_MS); // wait for DIO0 to turn HIGH signalling transmission finish
   //while (readReg(REG_IRQFLAGS2) & RF_IRQFLAGS2_PACKETSENT == 0x00); // wait for ModeReady
   setMode(RF69_MODE_STANDBY);
 }
@@ -439,8 +439,8 @@ void RFM69::select() {
   noInterrupts();
 #if defined (SPCR) && defined (SPSR)
   // save current SPI settings
-  _SPCR = SPCR;
-  _SPSR = SPSR;
+  //_SPCR = SPCR;
+  //_SPSR = SPSR;
 #endif
   // set RFM69 SPI settings
   SPI.setDataMode(SPI_MODE0);
@@ -454,8 +454,8 @@ void RFM69::unselect() {
   digitalWrite(_slaveSelectPin, HIGH);
   // restore SPI settings to what they were before talking to RFM69
 #if defined (SPCR) && defined (SPSR)
-  SPCR = _SPCR;
-  SPSR = _SPSR;
+  //SPCR = _SPCR;
+  //SPSR = _SPSR;
 #endif
   maybeInterrupts();
 }

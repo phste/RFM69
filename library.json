@@ -11,9 +11,5 @@
   "platforms": "atmelavr",
   "dependencies":
   [
-    {
-      "name": "SPIFlash",
-      "authors": "Felix Rusu"
-    }
   ]
 }
