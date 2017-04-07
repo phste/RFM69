@@ -48,6 +48,7 @@
 #endif
 
 #include <RFM69.h>
+/*
 #include <SPIFlash.h>
 
 //functions used in the REMOTE node
@@ -77,3 +78,4 @@ uint8_t readSerialLine(char* input, char endOfLineChar=10, uint8_t maxLength=115
 void PrintHex83(uint8_t* data, uint8_t length);
 
 #endif
+ */
